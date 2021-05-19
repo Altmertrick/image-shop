@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Cart: React.FC = () => {
+export const ImageList: React.FC = () => {
   return (
     <div>
-      <h3>Cart</h3>
+      <h1>i list</h1>
     </div>
   );
 };
