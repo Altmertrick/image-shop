@@ -8,6 +8,7 @@ import { Cart } from './cart/Cart';
 
 export const App: React.FC = () => {
   const [images, setImages] = useState<any>();
+  const [selectedImages, setSelectedImages] = useState<any>([]);
 
   const onSearchSubmit = async (term: string) => {
     const response = await upsplash.get('/search/photos', {
@@ -15,7 +16,11 @@ export const App: React.FC = () => {
     });
 
     setImages(response.data.results);
-    console.log(images);
+  };
+
+  const selectImage = (image: any) => {
+    setSelectedImages([...selectedImages, image]);
+    console.log(selectedImages);
   };
 
   return (
@@ -23,10 +28,14 @@ export const App: React.FC = () => {
       <Router>
         <Switch>
           <Route exact path="/">
-            <MainView onSearchSubmit={onSearchSubmit} />
+            <MainView
+              selectImage={selectImage}
+              onSearchSubmit={onSearchSubmit}
+              images={images}
+            />
           </Route>
           <Route exact path="/cart">
-            <Cart />
+            <Cart selectedImages={selectedImages} />
           </Route>
         </Switch>
       </Router>
