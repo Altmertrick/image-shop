@@ -1,7 +1,24 @@
-.grid-container {
-  display: grid;
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
-.grid-item img {
+.flex-container img {
   width: 200px;
+}
+
+.img-price {
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+.total-price {
+  display: flex;
+  height: 100px;
+  justify-content: flex-end;
+}
+
+.total-price p {
+  font-size: 1.6rem;
 }

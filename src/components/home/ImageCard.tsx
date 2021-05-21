@@ -1,3 +1,4 @@
+import '../../css/imageCard.css';
 import React, { useEffect } from 'react';
 import { useRef, useState } from 'react';
 
@@ -31,20 +32,24 @@ export const ImageCard: React.FC<ImageCardProps> = (props) => {
   };
 
   return (
-    <div className="grid-div" style={{ gridRowEnd: `span ${spans}` }}>
-      <img
-        ref={imageRef}
-        alt={props.image.description}
-        src={props.image.urls.regular}
-      />
-      <i
-        onClick={() => setLiked(!liked)}
-        className={liked ? 'heart red icon' : 'heart outline icon'}
-      />
-      <i
-        onClick={addToCart}
-        className={added ? 'bookmark  icon' : 'bookmark outline icon'}
-      />
+    <div className="grid-div " style={{ gridRowEnd: `span ${spans}` }}>
+      <div className="card">
+        <img
+          ref={imageRef}
+          alt={props.image.description}
+          src={props.image.urls.regular}
+        />
+        <div className="card-container">
+          <i
+            onClick={() => setLiked(!liked)}
+            className={liked ? 'heart red icon' : 'heart outline icon'}
+          />
+          <i
+            onClick={addToCart}
+            className={added ? 'bookmark  icon' : 'bookmark outline icon'}
+          />
+        </div>
+      </div>
     </div>
   );
 };

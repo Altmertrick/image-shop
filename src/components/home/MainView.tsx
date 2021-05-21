@@ -1,4 +1,4 @@
-import '../../css/similarStyle.css';
+import '../../css/generalStyle.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,9 @@ export const MainView: React.FC<MainViewProps> = (props) => {
           </Link>
         </div>
       </div>
-      <ImageList selectImage={props.selectImage} images={props.images} />
+      <div className="main-container">
+        <ImageList selectImage={props.selectImage} images={props.images} />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import '../../css/similarStyle.css';
+import '../../css/generalStyle.css';
 import '../../css/cart.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 interface CartProps {
@@ -10,9 +10,12 @@ interface CartProps {
 export const Cart: React.FC<CartProps> = ({ selectedImages }) => {
   const renderSelectedImages = () => {
     return selectedImages.map((image: any) => {
+      const imgPrice = image.likes / 100;
+
       return (
-        <div className="grid-item">
+        <div className="flex-container">
           <img alt={image.description} src={image.urls.regular} />
+          <p className="img-price">{`$${imgPrice}`}</p>
         </div>
       );
     });
@@ -31,7 +34,12 @@ export const Cart: React.FC<CartProps> = ({ selectedImages }) => {
         </div>
       </div>
 
-      <div className="grid-container">{renderSelectedImages()}</div>
+      <div className="main-container">{renderSelectedImages()}</div>
+      <div className="main-container">
+        <div className=" total-price">
+          <p>Total Prise: $XX</p>
+        </div>
+      </div>
     </div>
   );
 };
