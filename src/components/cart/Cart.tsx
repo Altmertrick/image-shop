@@ -1,6 +1,6 @@
 import '../../css/generalStyle.css';
 import '../../css/cart.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface CartProps {
