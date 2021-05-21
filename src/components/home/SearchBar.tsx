@@ -20,7 +20,6 @@ export const SearchBar: React.FC<SearchBarProps> = (props) => {
   return (
     <div>
       <form onSubmit={onFormSubmit}>
-        <label>Search images</label>
         <input value={term} onChange={(e) => setTerm(e.target.value)} />
       </form>
     </div>

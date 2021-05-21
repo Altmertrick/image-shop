@@ -39,7 +39,7 @@ export const ImageCard: React.FC<ImageCardProps> = (props) => {
       />
       <i
         onClick={() => setLiked(!liked)}
-        className={liked ? 'heart  icon' : 'heart outline icon'}
+        className={liked ? 'heart red icon' : 'heart outline icon'}
       />
       <i
         onClick={addToCart}

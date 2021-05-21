@@ -1,3 +1,4 @@
+import '../../css/similarStyle.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,8 +14,17 @@ interface MainViewProps {
 export const MainView: React.FC<MainViewProps> = (props) => {
   return (
     <div>
-      <Link to="/cart">Cart</Link>
-      <SearchBar onSearchSubmit={props.onSearchSubmit} />
+      <div className="header">
+        <div className="center">
+          <h1>Search Images</h1>
+          <SearchBar onSearchSubmit={props.onSearchSubmit} />
+        </div>
+        <div className="nav-img">
+          <Link to="/cart">
+            <i className="shopping cart inverted white big icon" />
+          </Link>
+        </div>
+      </div>
       <ImageList selectImage={props.selectImage} images={props.images} />
     </div>
   );
