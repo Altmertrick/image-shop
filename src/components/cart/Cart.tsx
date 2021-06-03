@@ -30,13 +30,10 @@ export const Cart: React.FC<CartProps> = ({ selectedImages }) => {
       return;
     }
     const value = selectedImages.reduce((acr: number, image: any) => {
-      console.log(acr);
-      console.log(image.likes);
-
       return acr + image.likes;
-    });
-    console.log(value);
-    return value;
+    }, 0);
+
+    return value / 100;
   };
 
   return (
