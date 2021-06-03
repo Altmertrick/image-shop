@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface CartProps {
-  selectedImages: any;
+  selectedImages: any[];
 }
 
 export const Cart: React.FC<CartProps> = ({ selectedImages }) => {

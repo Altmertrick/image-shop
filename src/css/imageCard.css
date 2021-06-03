@@ -22,3 +22,8 @@
 .icon {
   margin: 2px 5px;
 }
+
+.icon i:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

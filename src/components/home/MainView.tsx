@@ -16,7 +16,7 @@ export const MainView: React.FC<MainViewProps> = (props) => {
     <div>
       <div className="header">
         <div className="center">
-          <h1>Search Images</h1>
+          <h1>Search for Images</h1>
           <SearchBar onSearchSubmit={props.onSearchSubmit} />
         </div>
         <div className="nav-img">
