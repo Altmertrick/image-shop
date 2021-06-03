@@ -1,17 +1,29 @@
 import '../../css/imageCard.css';
+
 import React, { useEffect } from 'react';
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import {
+  addLikedImg,
+  removeFromLikedImg,
+  addImageToCart,
+  removeImageFromCart,
+} from '../../state/actions';
 
 interface ImageCardProps {
   image: any;
   selectImage: (image: any) => void;
+  isLiked: boolean;
+  isAddedToCart: boolean;
 }
 
 export const ImageCard: React.FC<ImageCardProps> = (props) => {
   const [spans, setSpans] = useState(0);
-  const [liked, setLiked] = useState(false);
-  const [added, setAdded] = useState(false);
+
   const imageRef = useRef<HTMLImageElement | null>(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     imageRef.current?.addEventListener('load', countSpans);
@@ -26,9 +38,26 @@ export const ImageCard: React.FC<ImageCardProps> = (props) => {
     }
   };
 
+  const likeImage = () => {
+    const imgId = props.image.id;
+
+    if (!props.isLiked) {
+      dispatch(addLikedImg(imgId));
+    }
+
+    if (props.isLiked) {
+      dispatch(removeFromLikedImg(imgId));
+    }
+  };
+
   const addToCart = () => {
-    setAdded(!added);
-    props.selectImage(props.image);
+    if (!props.isAddedToCart) {
+      dispatch(addImageToCart(props.image));
+    }
+
+    if (props.isAddedToCart) {
+      dispatch(removeImageFromCart(props.image));
+    }
   };
 
   return (
@@ -42,14 +71,18 @@ export const ImageCard: React.FC<ImageCardProps> = (props) => {
         <div className="card-bottom">
           <div className="icon">
             <i
-              onClick={() => setLiked(!liked)}
-              className={liked ? 'heart red icon' : 'heart outline icon'}
+              onClick={likeImage}
+              className={
+                props.isLiked ? 'heart red icon' : 'heart outline icon'
+              }
             />
           </div>
           <div className="icon">
             <i
               onClick={addToCart}
-              className={added ? 'bookmark  icon' : 'bookmark outline icon'}
+              className={
+                props.isAddedToCart ? 'bookmark  icon' : 'bookmark outline icon'
+              }
             />
           </div>
         </div>

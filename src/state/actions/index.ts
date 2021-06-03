@@ -12,14 +12,14 @@ export const removeFromLikedImg = (imgId: string) => {
   };
 };
 
-export const addImgToCart = (image: any) => {
+export const addImageToCart = (image: any) => {
   return {
     type: 'ADD_IMAGE_TO_CART',
     payload: image,
   };
 };
 
-export const removeImgFromCart = (image: any) => {
+export const removeImageFromCart = (image: any) => {
   return {
     type: 'REMOVE_IMAGE_FROM_CART',
     payload: image,
