@@ -21,7 +21,7 @@ export const ImageCard: React.FC<ImageCardProps> = (props) => {
     if (imageRef.current) {
       const height = imageRef.current.clientHeight;
       console.log(height);
-      const countedSpans = Math.ceil(height / 10);
+      const countedSpans = Math.ceil(height / 10) + 3;
       setSpans(countedSpans);
     }
   };
@@ -39,15 +39,19 @@ export const ImageCard: React.FC<ImageCardProps> = (props) => {
           alt={props.image.description}
           src={props.image.urls.regular}
         />
-        <div className="card-container">
-          <i
-            onClick={() => setLiked(!liked)}
-            className={liked ? 'heart red icon' : 'heart outline icon'}
-          />
-          <i
-            onClick={addToCart}
-            className={added ? 'bookmark  icon' : 'bookmark outline icon'}
-          />
+        <div className="card-bottom">
+          <div className="icon">
+            <i
+              onClick={() => setLiked(!liked)}
+              className={liked ? 'heart red icon' : 'heart outline icon'}
+            />
+          </div>
+          <div className="icon">
+            <i
+              onClick={addToCart}
+              className={added ? 'bookmark  icon' : 'bookmark outline icon'}
+            />
+          </div>
         </div>
       </div>
     </div>

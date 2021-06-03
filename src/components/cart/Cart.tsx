@@ -14,11 +14,29 @@ export const Cart: React.FC<CartProps> = ({ selectedImages }) => {
 
       return (
         <div className="flex-container">
-          <img alt={image.description} src={image.urls.regular} />
+          <img
+            key={image.id}
+            alt={image.description}
+            src={image.urls.regular}
+          />
           <p className="img-price">{`$${imgPrice}`}</p>
         </div>
       );
     });
+  };
+
+  const countTotalValue = (selectedImages: any) => {
+    if (selectedImages.length === 0) {
+      return;
+    }
+    const value = selectedImages.reduce((acr: number, image: any) => {
+      console.log(acr);
+      console.log(image.likes);
+
+      return acr + image.likes;
+    });
+    console.log(value);
+    return value;
   };
 
   return (
@@ -37,7 +55,7 @@ export const Cart: React.FC<CartProps> = ({ selectedImages }) => {
       <div className="main-container">{renderSelectedImages()}</div>
       <div className="main-container">
         <div className=" total-price">
-          <p>Total Prise: $XX</p>
+          <p>Total Prise: ${countTotalValue(selectedImages)}</p>
         </div>
       </div>
     </div>
