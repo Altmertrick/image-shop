@@ -1,3 +1,8 @@
+.main-container {
+  width: 90%;
+  margin: 20px auto;
+}
+
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -24,6 +29,11 @@
   font-size: 1.6rem;
 }
 
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 /* ========
 Animation adn overlay of an image
 =========== */

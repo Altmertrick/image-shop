@@ -50,6 +50,21 @@ export const Cart: React.FC = () => {
     return value / 100;
   };
 
+  const renderMessage = () => {
+    if (imagesInCart.length === 0) {
+      return (
+        <div className="message-container">
+          <h2>Your cart is empty Add some images!</h2>
+        </div>
+      );
+    }
+    return (
+      <div className="total-price">
+        <p>Total Prise: ${countTotalValue(imagesInCart)}</p>
+      </div>
+    );
+  };
+
   return (
     <div>
       <div className="header">
@@ -64,11 +79,7 @@ export const Cart: React.FC = () => {
       </div>
 
       <div className="main-container">{renderSelectedImages()}</div>
-      <div className="main-container">
-        <div className=" total-price">
-          <p>Total Prise: ${countTotalValue(imagesInCart)}</p>
-        </div>
-      </div>
+      <div className="main-container">{renderMessage()}</div>
     </div>
   );
 };
