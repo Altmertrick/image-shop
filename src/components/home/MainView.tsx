@@ -7,7 +7,6 @@ import { ImageList } from './ImageList';
 
 interface MainViewProps {
   onSearchSubmit: (term: string) => void;
-  selectImage: (image: any) => void;
   images: any;
 }
 
@@ -26,7 +25,7 @@ export const MainView: React.FC<MainViewProps> = (props) => {
         </div>
       </div>
       <div className="main-container">
-        <ImageList selectImage={props.selectImage} images={props.images} />
+        <ImageList images={props.images} />
       </div>
     </div>
   );

@@ -6,12 +6,9 @@ import { useSelector } from 'react-redux';
 
 interface ImageListProps {
   images: any;
-  selectImage: (image: any) => void;
 }
 
-export const ImageList: React.FC<ImageListProps> = (props) => {
-  const { images, selectImage } = props;
-
+export const ImageList: React.FC<ImageListProps> = ({ images }) => {
   const state: any = useSelector((state) => state);
   const { likedImages, imagesInCart } = state;
 
@@ -22,7 +19,6 @@ export const ImageList: React.FC<ImageListProps> = (props) => {
 
     return images.map((image: any) => {
       const isLiked = likedImages.includes(image.id);
-      console.log(likedImages);
 
       let isAddedToCart = false;
       const imageInCart = imagesInCart.find(
@@ -34,12 +30,12 @@ export const ImageList: React.FC<ImageListProps> = (props) => {
       }
 
       console.log(isAddedToCart);
+      console.log(imagesInCart);
 
       return (
         <ImageCard
           isAddedToCart={isAddedToCart}
           isLiked={isLiked}
-          selectImage={selectImage}
           key={image.id}
           image={image}
         />

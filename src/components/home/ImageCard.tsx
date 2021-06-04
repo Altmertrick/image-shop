@@ -13,7 +13,6 @@ import {
 
 interface ImageCardProps {
   image: any;
-  selectImage: (image: any) => void;
   isLiked: boolean;
   isAddedToCart: boolean;
 }
