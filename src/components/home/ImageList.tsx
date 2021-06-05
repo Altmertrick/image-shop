@@ -4,33 +4,33 @@ import { ImageCard } from './ImageCard';
 
 import { useSelector } from 'react-redux';
 
+import { ImageType, StoreState } from '../../types';
+
 interface ImageListProps {
-  images: any;
+  images: ImageType[] | null;
 }
 
 export const ImageList: React.FC<ImageListProps> = ({ images }) => {
-  const state: any = useSelector((state) => state);
-  const { likedImages, imagesInCart } = state;
+  const { likedImages, imagesInCart } = useSelector(
+    (state: StoreState) => state
+  );
 
   const renderImages = (): any => {
     if (!images) {
       return;
     }
 
-    return images.map((image: any) => {
+    return images.map((image) => {
       const isLiked = likedImages.includes(image.id);
 
       let isAddedToCart = false;
       const imageInCart = imagesInCart.find(
-        (cartImage: { id: any }) => cartImage.id === image.id
+        (cartImage: { id: string }) => cartImage.id === image.id
       );
 
       if (imageInCart) {
         isAddedToCart = true;
       }
-
-      console.log(isAddedToCart);
-      console.log(imagesInCart);
 
       return (
         <ImageCard

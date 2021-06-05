@@ -6,25 +6,25 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { removeImageFromCart } from '../../state/actions';
+import { removeImageFromCart } from '../../state/action-creators';
+
+import { ImageType, StoreState } from '../../types';
 
 export const Cart: React.FC = () => {
-  const { imagesInCart } = useSelector((state: any) => state);
+  const { imagesInCart } = useSelector((state: StoreState) => state);
   const dispatch = useDispatch();
 
-  const removeFromCart = (image: any): void => {
+  const removeFromCart = (image: ImageType): void => {
     dispatch(removeImageFromCart(image));
-    console.log('image was removed');
-    console.log(image);
   };
 
   const renderSelectedImages = () => {
-    return imagesInCart.map((image: any) => {
+    return imagesInCart.map((image: ImageType) => {
       const imgPrice = image.likes / 100;
 
       return (
-        <div className="flex-container">
-          <div key={image.id} className="image-container">
+        <div key={image.id} className="flex-container">
+          <div className="image-container">
             <img alt={image.description} src={image.urls.regular} />
             <div className="image-overlay">
               <button onClick={() => removeFromCart(image)} className="button">
@@ -38,12 +38,12 @@ export const Cart: React.FC = () => {
     });
   };
 
-  const countTotalValue = (imagesInCart: any) => {
-    if (imagesInCart.length === 0) {
+  const countTotalValue = (imageList: ImageType[]) => {
+    if (imageList.length === 0) {
       return;
     }
 
-    const value = imagesInCart.reduce((acr: number, image: any) => {
+    const value = imageList.reduce((acr: number, image) => {
       return acr + image.likes;
     }, 0);
 

@@ -1,8 +1,12 @@
-export const CartImagesReducer = (state: any = [], action: any) => {
+import { Action } from '../actions';
+import { ActionType } from '../action-types';
+import { ImageType } from '../../types';
+
+export const CartImagesReducer = (state: ImageType[] = [], action: Action) => {
   switch (action.type) {
-    case 'ADD_IMAGE_TO_CART':
+    case ActionType.ADD_IMAGE_TO_CART:
       return [...state, action.payload];
-    case 'REMOVE_IMAGE_FROM_CART':
+    case ActionType.REMOVE_IMAGE_FROM_CART:
       return state.filter(
         (cartImage: any) => cartImage.id !== action.payload.id
       );

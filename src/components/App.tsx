@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { upsplash } from '../api/upsplash';
+import { unsplash } from '../api/unsplash';
 import { MainView } from './home/MainView';
 import { Cart } from './cart/Cart';
 
+import { ImageType } from '../types';
+
 export const App: React.FC = () => {
-  const [images, setImages] = useState<any>();
+  const [images, setImages] = useState<ImageType[] | null>([]);
 
   const onSearchSubmit = async (term: string) => {
-    const response = await upsplash.get('/search/photos', {
+    const response = await unsplash.get('/search/photos', {
       params: { query: term },
     });
 

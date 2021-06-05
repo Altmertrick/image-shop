@@ -9,10 +9,12 @@ import {
   removeFromLikedImg,
   addImageToCart,
   removeImageFromCart,
-} from '../../state/actions';
+} from '../../state/action-creators';
+
+import { ImageType } from '../../types';
 
 interface ImageCardProps {
-  image: any;
+  image: ImageType;
   isLiked: boolean;
   isAddedToCart: boolean;
 }
