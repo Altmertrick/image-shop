@@ -25,7 +25,7 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
 
       let isAddedToCart = false;
       const imageInCart = imagesInCart.find(
-        (cartImage: { id: string }) => cartImage.id === image.id
+        (cartImage) => cartImage.id === image.id
       );
 
       if (imageInCart) {

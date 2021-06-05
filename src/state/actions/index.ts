@@ -1,4 +1,5 @@
 import { ActionType } from '../action-types';
+import { ImageType } from '../../types';
 
 interface addLikedImageAction {
   type: ActionType.ADD_LIKED_IMG;
@@ -12,12 +13,12 @@ interface removeFromLikedImageAction {
 
 interface addImageToCartAction {
   type: ActionType.ADD_IMAGE_TO_CART;
-  payload: any;
+  payload: ImageType;
 }
 
 interface removeImageFromCart {
   type: ActionType.REMOVE_IMAGE_FROM_CART;
-  payload: any;
+  payload: ImageType;
 }
 
 export type Action =
